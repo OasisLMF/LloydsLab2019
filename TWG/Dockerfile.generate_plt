@@ -7,7 +7,7 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
 
 WORKDIR /home
-COPY generate_plt.py ./
+COPY *.py ./
 COPY run.sh ./
 RUN chmod +x run.sh
 

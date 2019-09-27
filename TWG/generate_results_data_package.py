@@ -17,7 +17,6 @@ import gc
 import dask.dataframe as dd
 from pathlib import Path
 from scipy.stats import beta, poisson
-from console_progressbar import u
 
 #
 # Utility to generate a reference results package structure.
