@@ -1,0 +1,8 @@
+click
+scipy
+h5py
+console_progressbar
+pyarrow
+pandas
+tables
+boto3
