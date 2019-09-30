@@ -1,0 +1,37 @@
+{
+    "fields": [
+        {
+            "name": "summary_id",
+            "type": "integer",
+            "format": "default"
+        },
+        {
+            "name": "type",
+            "type": "integer",
+            "format": "default"
+        },
+        {
+            "name": "event_id",
+            "type": "integer",
+            "format": "default"
+        },
+        {
+            "name": "mean",
+            "type": "number",
+            "format": "default"
+        },
+        {
+            "name": "standard_deviation",
+            "type": "number",
+            "format": "default"
+        },
+        {
+            "name": "exposure_value",
+            "type": "number",
+            "format": "default"
+        }
+    ],
+    "missingValues": [
+        ""
+    ]
+}
