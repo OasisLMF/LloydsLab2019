@@ -188,6 +188,20 @@
             "mediatype": "text/csv",
             "encoding": "UTF-8",
             "schema": "http://oasislmf.org/ep/v1_0/schema"
-        }
+        },
+        {
+            "path": "exposure/dom-rep-oed-account.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/oed_account/v1_0/schema"
+        },
+        {
+            "path": "exposure/dom-rep-oed-location.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/oed_location/v1_0/schema"
+        }        
     ]
   }
