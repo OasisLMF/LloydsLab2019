@@ -8,6 +8,7 @@ export cwd=$(pwd)
 
 # Create GEM repo with Dominican Republic model data
 
+rm -rf gem
 git clone https://github.com/oasislmf/gem
 cd gem
 pip install oasislmf
@@ -56,4 +57,4 @@ cp ./oasis_output/output/il_S2_summary-info.csv results_package_example/output/i
 # Create the results package archive
 
 cd results_package_example 
-tar csv * ../results_package_example.tar
+tar cvf ../results_package_example.tar *
