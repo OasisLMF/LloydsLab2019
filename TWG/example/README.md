@@ -10,6 +10,7 @@ To generate the example run the following command. This assumes that Python 3 an
 
 An example results package will be created as example_results_package.tar with the following structure:
 
+```
 .
 ├── analysis_settings.json
 ├── exposure
@@ -48,4 +49,4 @@ An example results package will be created as example_results_package.tar with t
 │           └── summary_info.csv
 └── results_package.json
 
-
+```
