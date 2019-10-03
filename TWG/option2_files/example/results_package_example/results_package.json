@@ -1,0 +1,200 @@
+{
+    "name": "example_results_package",
+    "title": "Example results package",
+    "licenses": [{
+      "id": "CC0-1.0",
+      "title": "CC0 1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }],
+    "resources": [
+        {
+            "path": "analysis_settings.json",
+            "format": "json",
+            "mediatype": "text/json",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/analysis_settings/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/all/aal.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/aal/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/all/elt.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/elt/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/all/plt.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/plt/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/all/aal.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/aal/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/all/full_uncertainty_oep.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/ep/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/all/full_uncertainty_aep.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/ep/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/by_geography/aal.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/aal/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/by_geography/elt.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/elt/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/by_geography/plt.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/plt/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/by_geography/aal.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/aal/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/by_geography/full_uncertainty_oep.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/ep/v1_0/schema"
+        },
+        {
+            "path": "outputs/groundup_loss/by_geography/full_uncertainty_aep.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/ep/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/all/aal.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/aal/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/all/elt.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/elt/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/all/plt.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/plt/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/all/aal.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/aal/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/all/full_uncertainty_oep.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/ep/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/all/full_uncertainty_aep.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/ep/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/by_geography/aal.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/aal/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/by_geography/elt.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/elt/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/by_geography/plt.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/plt/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/by_geography/aal.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/aal/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/by_geography/full_uncertainty_oep.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/ep/v1_0/schema"
+        },
+        {
+            "path": "outputs/insured_loss/by_geography/full_uncertainty_aep.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/ep/v1_0/schema"
+        },
+        {
+            "path": "exposure/dom-rep-oed-account.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/oed_account/v1_0/schema"
+        },
+        {
+            "path": "exposure/dom-rep-oed-location.csv",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "UTF-8",
+            "schema": "http://oasislmf.org/oed_location/v1_0/schema"
+        }        
+    ]
+  }

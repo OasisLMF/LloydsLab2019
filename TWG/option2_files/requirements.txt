@@ -1,0 +1,9 @@
+click
+scipy
+h5py
+pyarrow
+pandas
+tables
+vaex
+dask[complete]
+humanize
