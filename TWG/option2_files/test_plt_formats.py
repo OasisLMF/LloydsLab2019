@@ -179,7 +179,7 @@ def main(
         gc.collect()
 
         start = time.time()
-        plt_df.to_csv(os.path.join(temp_dir, 'temp_plt.csv'))
+        plt_df.to_csv(os.path.join(temp_dir, 'temp_plt.csv'), index=False)
         end = time.time()
         csv_write_time = end - start
 
@@ -193,11 +193,7 @@ def main(
         gc.collect()
 
         start = time.time()
-        plt_df.to_csv(os.path.join(temp_dir, 'temp_plt.csv'))
-        utils.csv_to_gz(
-            os.path.join(temp_dir, 'temp_plt.csv'),
-            os.path.join(temp_dir, 'temp_plt.csv.gz')
-        )
+        plt_df.to_csv(os.path.join(temp_dir, 'temp_plt.csv'), compression='gzip', index=False)
 
         end = time.time()
         csv_gz_write_time = end - start
@@ -212,7 +208,7 @@ def main(
         gc.collect()
 
         start = time.time()
-        plt_df.to_parquet(os.path.join(temp_dir, 'temp_plt.parquet'))
+        plt_df.to_parquet(os.path.join(temp_dir, 'temp_plt.parquet'), index=False)
 
         end = time.time()
         parquet_write_time = end - start
@@ -256,7 +252,7 @@ def main(
             if do_header:
                 f.writelines(
                     "num_periods,event_rate,num_samples,csv_size,csv_gz_size,parquet_size," +
-                    "csv_write_time,csv_load_time,csv_gz_write_time,csv_gz_load_time,parquet_write_time,parquet_load_time," +
+                    "csv_write_time,csv_load_time,csv_gz_write_time,csv_gz_load_time,parquet_write_time,parquet_load_time" +
 #                    "sql_load_time," +
 #                    "aal_pd_time,aep_pd_time,aal_sql_time,aep_sql_time"+
                     "\n")
@@ -268,7 +264,7 @@ def main(
                 "\n").format(
                 num_periods, event_rate, num_samples, os.path.getsize(
                     plt_csv_file), os.path.getsize(plt_csv_gz_file), os.path.getsize(plt_parquet_file),
-                csv_write_time, csv_load_time, csv_gz_write_time, csv_gz_load_time, parquet_write_time, parquet_load_time,
+                csv_write_time, csv_load_time, csv_gz_write_time, csv_gz_load_time, parquet_write_time, parquet_load_time
 #                sql_load_time,
 #                aal_pd_time, aep_pd_time, aal_sql_time, aep_sql_time
             ))
