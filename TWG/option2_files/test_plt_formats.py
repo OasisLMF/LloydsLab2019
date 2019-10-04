@@ -152,22 +152,22 @@ def main(
             plt_parquet_file
         )
 
-        # Insert into database
-        gc.collect()
+        # # Insert into database
+        # gc.collect()
 
-        start = time.time()
+        # start = time.time()
 
-        if sqlalchemy_utils.database_exists(conn_string):
-            sqlalchemy_utils.drop_database(conn_string)
-        sqlalchemy_utils.create_database(conn_string)
-        engine = sqlalchemy.create_engine(conn_string)
-        plt_df = pd.read_csv(plt_csv_file)
-        summary_info_df = pd.read_csv(summary_file)
-        plt_df = plt_df.merge(summary_info_df, on='summary_id')
-        plt_df.to_sql('plt', engine)
+        # if sqlalchemy_utils.database_exists(conn_string):
+        #     sqlalchemy_utils.drop_database(conn_string)
+        # sqlalchemy_utils.create_database(conn_string)
+        # engine = sqlalchemy.create_engine(conn_string)
+        # plt_df = pd.read_csv(plt_csv_file)
+        # summary_info_df = pd.read_csv(summary_file)
+        # plt_df = plt_df.merge(summary_info_df, on='summary_id')
+        # plt_df.to_sql('plt', engine)
 
-        end = time.time()
-        sql_load_time = end - start
+        # end = time.time()
+        # sql_load_time = end - start
 
         gc.collect()
 
@@ -219,35 +219,35 @@ def main(
 
         gc.collect()
 
-        start = time.time()
-        query_aal_by_summary(
-            summary_df, plt_df, num_periods, num_samples)
-        end = time.time()
-        aal_pd_time = end - start
+        # start = time.time()
+        # query_aal_by_summary(
+        #     summary_df, plt_df, num_periods, num_samples)
+        # end = time.time()
+        # aal_pd_time = end - start
 
-        gc.collect()
+        # gc.collect()
 
-        start = time.time()
-        query_aep_by_summary(summary_df, plt_df, num_periods)
-        end = time.time()
-        aep_pd_time = end - start
+        # start = time.time()
+        # query_aep_by_summary(summary_df, plt_df, num_periods)
+        # end = time.time()
+        # aep_pd_time = end - start
 
-        gc.collect()
+        # gc.collect()
 
-        start = time.time()
-        query_aal_by_summary_sql(
-            engine, num_periods, num_samples)
-        end = time.time()
-        aal_sql_time = end - start
+        # start = time.time()
+        # query_aal_by_summary_sql(
+        #     engine, num_periods, num_samples)
+        # end = time.time()
+        # aal_sql_time = end - start
 
-        gc.collect()
+        # gc.collect()
 
-        start = time.time()
-        query_aep_by_summary_sql(engine, num_periods)
-        end = time.time()
-        aep_sql_time = end - start
+        # start = time.time()
+        # query_aep_by_summary_sql(engine, num_periods)
+        # end = time.time()
+        # aep_sql_time = end - start
 
-        gc.collect()
+        # gc.collect()
 
         mode = 'a'
         if do_header:
@@ -256,16 +256,21 @@ def main(
             if do_header:
                 f.writelines(
                     "num_periods,event_rate,num_samples,csv_size,csv_gz_size,parquet_size," +
-                    "csv_write_time,csv_load_time,csv_gz_write_time,csv_gz_load_time,parquet_write_time,parquet_load_time,sql_load_time," +
-                    "aal_pd_time,aep_pd_time,aal_sql_time,aep_sql_time\n")
+                    "csv_write_time,csv_load_time,csv_gz_write_time,csv_gz_load_time,parquet_write_time,parquet_load_time," +
+#                    "sql_load_time," +
+#                    "aal_pd_time,aep_pd_time,aal_sql_time,aep_sql_time"+
+                    "\n")
             f.writelines((
                 "{},{},{},{},{},{}," +
-                "{:.2f},{:.2f},{:.2f},{:.2f},{:.2f},{:.2f},{:.2f}," +
-                "{:.2f},{:.2f},{:.2f},{:.2f}\n").format(
+                "{:.2f},{:.2f},{:.2f},{:.2f},{:.2f},{:.2f}," +
+                # "{:.2f}," +
+                # "{:.2f},{:.2f},{:.2f},{:.2f}" +
+                "\n").format(
                 num_periods, event_rate, num_samples, os.path.getsize(
                     plt_csv_file), os.path.getsize(plt_csv_gz_file), os.path.getsize(plt_parquet_file),
-                csv_write_time, csv_load_time, csv_gz_write_time, csv_gz_load_time, parquet_write_time, parquet_load_time, sql_load_time,
-                aal_pd_time, aep_pd_time, aal_sql_time, aep_sql_time
+                csv_write_time, csv_load_time, csv_gz_write_time, csv_gz_load_time, parquet_write_time, parquet_load_time,
+#                sql_load_time,
+#                aal_pd_time, aep_pd_time, aal_sql_time, aep_sql_time
             ))
 
 
