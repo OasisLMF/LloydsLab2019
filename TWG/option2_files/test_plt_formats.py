@@ -138,19 +138,19 @@ def main(
             num_summaries_per_summary_set, loss_alpha, loss_beta, loss_max,
             output_file=plt_csv_file)
 
-        # Create gzipped CSV PLT file
+        # # Create gzipped CSV PLT file
         plt_csv_gz_file = os.path.join(temp_dir, 'plt.csv.gz')
-        utils.csv_to_gz(
-            plt_csv_file,
-            plt_csv_gz_file
-        )
+        # utils.csv_to_gz(
+        #     plt_csv_file,
+        #     plt_csv_gz_file
+        # )
 
-        # Create parquet PLT file
+        # # Create parquet PLT file
         plt_parquet_file = os.path.join(temp_dir, 'plt.parquet')
-        utils.csv_to_parquet(
-            plt_csv_file,
-            plt_parquet_file
-        )
+        # utils.csv_to_parquet(
+        #     plt_csv_file,
+        #     plt_parquet_file
+        # )
 
         # # Insert into database
         # gc.collect()
@@ -186,14 +186,7 @@ def main(
         gc.collect()
 
         start = time.time()
-        (summary_df, plt_df) = load_gz_csv(summary_file, plt_csv_gz_file)
-        end = time.time()
-        csv_gz_load_time = end - start
-
-        gc.collect()
-
-        start = time.time()
-        plt_df.to_csv(os.path.join(temp_dir, 'temp_plt.csv'), compression='gzip', index=False)
+        plt_df.to_csv(plt_csv_gz_file, compression='gzip', index=False)
 
         end = time.time()
         csv_gz_write_time = end - start
@@ -201,17 +194,24 @@ def main(
         gc.collect()
 
         start = time.time()
-        (summary_df, plt_df) = load_parquet(summary_file, plt_parquet_file)
+        (summary_df, plt_df) = load_gz_csv(summary_file, plt_csv_gz_file)
         end = time.time()
-        parquet_load_time = end - start
+        csv_gz_load_time = end - start
 
         gc.collect()
 
         start = time.time()
-        plt_df.to_parquet(os.path.join(temp_dir, 'temp_plt.parquet'), index=False)
+        plt_df.to_parquet(plt_parquet_file, index=False)
 
         end = time.time()
         parquet_write_time = end - start
+
+        gc.collect()
+
+        start = time.time()
+        (summary_df, plt_df) = load_parquet(summary_file, plt_parquet_file)
+        end = time.time()
+        parquet_load_time = end - start
 
         gc.collect()
 
@@ -258,7 +258,7 @@ def main(
                     "\n")
             f.writelines((
                 "{},{},{},{},{},{}," +
-                "{:.2f},{:.2f},{:.2f},{:.2f},{:.2f},{:.2f}," +
+                "{:.2f},{:.2f},{:.2f},{:.2f},{:.2f},{:.2f}" +
                 # "{:.2f}," +
                 # "{:.2f},{:.2f},{:.2f},{:.2f}" +
                 "\n").format(
