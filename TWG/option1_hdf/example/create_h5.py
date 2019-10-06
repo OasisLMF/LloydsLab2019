@@ -1,9 +1,10 @@
 import pandas as pd
-import h5py
+
 
 def add_csv_to_store(csv_file, name, store):
     df = pd.read_csv(csv_file)
     store.put(name, df, format='table', data_columns=True)
+
 
 with pd.HDFStore(path='example_results_package.h5', mode='a') as hdf:
 
@@ -58,4 +59,3 @@ with pd.HDFStore(path='example_results_package.h5', mode='a') as hdf:
         './oasis_output/output/il_S2_pltcalc.csv', 'results_package_example/output/insured_loss/by_geography/plt', hdf)
     add_csv_to_store(
         './oasis_output/output/il_S2_summary-info.csv', 'results_package_example/output/insured_loss/by_geography/summary_info', hdf)
-

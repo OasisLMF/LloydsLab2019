@@ -1,24 +1,10 @@
-import boto3
 import click
-import csv
 import os
-import random
-import sys
-import shutil
 import tempfile
-import humanize
-import subprocess
 import pandas as pd
-import pyarrow as pa
-import pyarrow.parquet as pq
 import time
 import utils
 import gc
-import dask.dataframe as dd
-from pathlib import Path
-from scipy.stats import beta, poisson
-import sqlalchemy
-import sqlalchemy_utils
 
 #
 # Utility to benchmark size and query perfomance of
@@ -253,8 +239,8 @@ def main(
                 f.writelines(
                     "num_periods,event_rate,num_samples,csv_size,csv_gz_size,parquet_size," +
                     "csv_write_time,csv_load_time,csv_gz_write_time,csv_gz_load_time,parquet_write_time,parquet_load_time" +
-#                    "sql_load_time," +
-#                    "aal_pd_time,aep_pd_time,aal_sql_time,aep_sql_time"+
+                    #                    "sql_load_time," +
+                    #                    "aal_pd_time,aep_pd_time,aal_sql_time,aep_sql_time"+
                     "\n")
             f.writelines((
                 "{},{},{},{},{},{}," +
@@ -265,8 +251,8 @@ def main(
                 num_periods, event_rate, num_samples, os.path.getsize(
                     plt_csv_file), os.path.getsize(plt_csv_gz_file), os.path.getsize(plt_parquet_file),
                 csv_write_time, csv_load_time, csv_gz_write_time, csv_gz_load_time, parquet_write_time, parquet_load_time
-#                sql_load_time,
-#                aal_pd_time, aep_pd_time, aal_sql_time, aep_sql_time
+                #                sql_load_time,
+                #                aal_pd_time, aep_pd_time, aal_sql_time, aep_sql_time
             ))
 
 
