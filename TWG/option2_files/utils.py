@@ -1,23 +1,16 @@
-import boto3
-import click
 import csv
 import os
 import random
-import sys
-import shutil
-import tempfile
 import humanize
 import subprocess
 import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
-import time
-import gc
-import dask.dataframe as dd
-from pathlib import Path
 from scipy.stats import beta, poisson
 
-# Shared utils
+#
+# Shared utils for working with results data package.
+#
 
 def get_readable_filezize(file):
     return humanize.naturalsize(os.path.getsize(file))
@@ -58,20 +51,28 @@ def write_plt_csv(
         loss_alpha, loss_beta, loss_max,
         output_file):
 
+    # Generate the number of events per period in chunks
+    period_sample_chunk_size = 10000
+
     with open(output_file, 'w') as csvfile:
         csvwriter = csv.writer(csvfile)
         csvwriter.writerow(
             ['period', 'event_id', 'summary_id', 'sample_id', 'loss'])
         for period in range(0, num_periods):
-            if period % 10000 == 0:
-                events_per_period = poisson.rvs(event_rate, size=10000)
-            for event_id in range(0, events_per_period[period % 10000]):
+            # If beginning of new period chunk, gererate a chunk of events per period
+            if period % period_sample_chunk_size == 0:
+                events_per_period = poisson.rvs(event_rate, size=period_sample_chunk_size)
+
+            # For each event in the period, sample a loss
+            for event_id in range(0, events_per_period[period % period_sample_chunk_size]):
                 event_losses = beta.rvs(
                     loss_alpha, loss_beta, size=num_summaries_per_summary_set * num_samples)
                 for summary_id in range(0, num_summaries_per_summary_set):
-                    if random.uniform(0, 1) < prob_of_loss:
-                        for sample_id in range(0, num_samples):
-                            loss = event_losses[summary_id *
-                                                num_samples + sample_id] * loss_max
-                            csvwriter.writerow(
-                                [period, event_id, summary_id, sample_id, loss])
+                    # Kick out losses according to a specified prob of loss
+                    if random.uniform(0, 1) > prob_of_loss:
+                        continue
+                    for sample_id in range(0, num_samples):
+                        loss = event_losses[summary_id *
+                                            num_samples + sample_id] * loss_max
+                        csvwriter.writerow(
+                            [period, event_id, summary_id, sample_id, loss])

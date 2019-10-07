@@ -1,10 +1,8 @@
 import pandas as pd
 
-
 def add_csv_to_store(csv_file, name, store):
     df = pd.read_csv(csv_file)
     store.put(name, df, format='table', data_columns=True)
-
 
 with pd.HDFStore(path='example_results_package.h5', mode='a') as hdf:
 
